@@ -166,7 +166,7 @@ QWidget * device_panel() {
   device_layout->addWidget(ocam_view, 0, Qt::AlignBottom);
   device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
   QObject::connect(ocam_view, &QPushButton::released, [=]() {
-    params.read_db_bool("IsOpenpilotViewEnabled") ? Params().write_db_value("IsOpenpilotViewEnabled", "0", 1) : Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
+    Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
   });
 
   QPushButton* dcam_view = new QPushButton("운전자 영상 미리보기");
