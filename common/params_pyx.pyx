@@ -178,6 +178,7 @@ keys = {
   b"UserOptionNameDescription8": [TxType.PERSISTENT],
   b"UserOptionNameDescription9": [TxType.PERSISTENT],
   b"UserOptionNameDescription10": [TxType.PERSISTENT],
+  b"QtEnabled": [TxType.PERSISTENT],
 }
 
 def ensure_bytes(v):

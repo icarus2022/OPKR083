@@ -143,6 +143,7 @@ def manager_init(spinner=None):
     ("UserOptionNameDescription8", ""),
     ("UserOptionNameDescription9", ""),
     ("UserOptionNameDescription10", ""),
+    ("QtEnabled", "0"),
   ]
 
   # set unset params
