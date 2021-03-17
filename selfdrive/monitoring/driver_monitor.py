@@ -21,15 +21,15 @@ EventName = car.CarEvent.EventName
 if not EnableLogger:
   _AWARENESS_TIME = 3600.
 else:
-  _AWARENESS_TIME = 35.  # passive wheel touch total timeout
+  _AWARENESS_TIME = 350.  # passive wheel touch total timeout
 _AWARENESS_PRE_TIME_TILL_TERMINAL = 12.
-_AWARENESS_PROMPT_TIME_TILL_TERMINAL = 6.
+_AWARENESS_PROMPT_TIME_TILL_TERMINAL = 60.
 if not EnableDriverMonitoring and not EnableLogger:
   _DISTRACTED_TIME = 3600.
 else:
-  _DISTRACTED_TIME = 11.
-_DISTRACTED_PRE_TIME_TILL_TERMINAL = 8.
-_DISTRACTED_PROMPT_TIME_TILL_TERMINAL = 6.
+  _DISTRACTED_TIME = 110.
+_DISTRACTED_PRE_TIME_TILL_TERMINAL = 80.
+_DISTRACTED_PROMPT_TIME_TILL_TERMINAL = 60.
 
 if not EnableLogger:
   _FACE_THRESHOLD = 0.99
