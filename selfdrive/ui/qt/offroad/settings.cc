@@ -127,6 +127,12 @@ QWidget * toggles_panel() {
                                             "comma.ai에서 유지 또는 지원하지 않고 표준 안전 모델에 부합하는 것으로 확인되지 않은 오픈 소스 커뮤니티의 기능을 사용하십시오. 이러한 기능에는 커뮤니티 지원 자동차와 커뮤니티 지원 하드웨어가 포함됩니다. 이러한 기능을 사용할 때는 각별히 주의해야 합니다.",
                                             "../assets/offroad/icon_shell.png"
                                             ));
+  toggles_list->addWidget(horizontal_line());
+  toggles_list->addWidget(new ParamsToggle("QTEnabled",
+                                            "QT 활성화",
+                                            "QT UI를 사용합니다. 기존 OFFROAD APK를 활성화 하려면 이 기능을 끄십시오.",
+                                            "../assets/offroad/icon_shell.png"
+                                            ));
 
   QWidget *widget = new QWidget;
   widget->setLayout(toggles_list);
