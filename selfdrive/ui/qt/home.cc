@@ -4,7 +4,6 @@
 #include <thread>
 #include <exception>
 
-#include <QLocale>
 #include <QDateTime>
 #include <QHBoxLayout>
 #include <QLayout>
@@ -91,7 +90,6 @@ OffroadHome::OffroadHome(QWidget* parent) : QWidget(parent) {
   QHBoxLayout* header_layout = new QHBoxLayout();
 
   date = new QLabel();
-  dt = new QLabel();
   date->setStyleSheet(R"(font-size: 55px;)");
   header_layout->addWidget(date, 0, Qt::AlignTop | Qt::AlignLeft);
 
@@ -154,9 +152,8 @@ void OffroadHome::refresh() {
     return;
   }
 
-  QLocale locale(QLocale::Korean);
-  dt->setText(QDateTime::currentDateTime().toString("yyyy M d, dddd"));
-  QDateTime date = locale.toDateTime(dt, "yyyy년 M월 d일, dddd");
+  //QLocale locale(QLocale::Korean);
+  date->setText(QDateTime::currentDateTime().toString("yyyy년 M월 d일"));
   // update alerts
 
   alerts_widget->refresh();
