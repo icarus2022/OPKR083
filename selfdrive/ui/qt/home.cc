@@ -4,6 +4,7 @@
 #include <thread>
 #include <exception>
 
+#include <QLocale>
 #include <QDateTime>
 #include <QHBoxLayout>
 #include <QLayout>
@@ -93,7 +94,7 @@ OffroadHome::OffroadHome(QWidget* parent) : QWidget(parent) {
   date->setStyleSheet(R"(font-size: 55px;)");
   header_layout->addWidget(date, 0, Qt::AlignTop | Qt::AlignLeft);
 
-  QLabel* version = new QLabel(QString::fromStdString("openpilot v" + Params().get("Version")));
+  QLabel* version = new QLabel(QString::fromStdString("오픈파일럿 v" + Params().get("Version")));
   version->setStyleSheet(R"(font-size: 45px;)");
   header_layout->addWidget(version, 0, Qt::AlignTop | Qt::AlignRight);
 
@@ -152,7 +153,8 @@ void OffroadHome::refresh() {
     return;
   }
 
-  date->setText(QDateTime::currentDateTime().toString("dddd, MMMM d"));
+  QLocale korean("ko");
+  date->setText(QDateTime::currentDateTime().toString("yyyy년 M월 d일 dddd"));
 
   // update alerts
 
