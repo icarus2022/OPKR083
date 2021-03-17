@@ -28,14 +28,14 @@ QLayout* build_stat(QString name, int stat) {
 
   QLabel* metric = new QLabel(QString("%1").arg(stat));
   metric->setStyleSheet(R"(
-    font-size: 80px;
+    font-size: 64px;
     font-weight: 600;
   )");
   layout->addWidget(metric, 0, Qt::AlignLeft);
 
   QLabel* label = new QLabel(name);
   label->setStyleSheet(R"(
-    font-size: 45px;
+    font-size: 36px;
     font-weight: 500;
   )");
   layout->addWidget(label, 0, Qt::AlignLeft);
@@ -87,7 +87,7 @@ DriveStats::DriveStats(QWidget* parent) : QWidget(parent) {
   setLayout(vlayout);
   setStyleSheet(R"(
     QLabel {
-      font-size: 48px;
+      font-size: 38px;
       font-weight: 500;
     }
   )");

@@ -34,7 +34,7 @@ void PairingQRWidget::refresh(){
   if (std::min(IMEI.length(), serial.length()) <= 5) {
     qrCode->setText("Error getting serial: contact support");
     qrCode->setWordWrap(true);
-    qrCode->setStyleSheet(R"(font-size: 60px;)");
+    qrCode->setStyleSheet(R"(font-size: 48px;)");
     return;
   }
   QVector<QPair<QString, QJsonValue>> payloads;
@@ -73,7 +73,7 @@ PrimeUserWidget::PrimeUserWidget(QWidget* parent) : QWidget(parent) {
   mainLayout = new QVBoxLayout;
   QLabel* commaPrime = new QLabel("COMMA PRIME");
   commaPrime->setStyleSheet(R"(
-    font-size: 60px;
+    font-size: 48px;
   )");
   mainLayout->addWidget(commaPrime);
 
@@ -84,7 +84,7 @@ PrimeUserWidget::PrimeUserWidget(QWidget* parent) : QWidget(parent) {
 
   QLabel* commaPoints = new QLabel("COMMA POINTS");
   commaPoints->setStyleSheet(R"(
-    font-size: 60px;
+    font-size: 48px;
     color: #b8b8b8;
   )");
   mainLayout->addWidget(commaPoints);
@@ -125,7 +125,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
 
   QLabel* description = new QLabel("Become a comma prime member in the comma app and get premium features!");
   description->setStyleSheet(R"(
-    font-size: 50px;
+    font-size: 48px;
     color: #b8b8b8;
   )");
   description->setWordWrap(true);
@@ -137,7 +137,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
   for (auto featureContent : features) {
     QLabel* feature = new QLabel(featureContent);
     feature->setStyleSheet(R"(
-      font-size: 40px;
+      font-size: 32px;
     )");
 
     vlayout->addWidget(feature);
@@ -168,7 +168,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QWidget(parent) {
   finishButton->setFixedHeight(200);
   finishButton->setStyleSheet(R"(
     border-radius: 30px;
-    font-size: 55px;
+    font-size: 44px;
     background: #585858;
   )");
   QObject::connect(finishButton, SIGNAL(released()), this, SLOT(showQrCode()));
@@ -176,7 +176,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QWidget(parent) {
 
   QLabel* registrationDescription = new QLabel("Pair your device with the comma connect app");
   registrationDescription->setStyleSheet(R"(
-    font-size: 55px;
+    font-size: 44px;
     font-weight: 400;
   )");
 
@@ -189,7 +189,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* qrLayout = new QVBoxLayout;
 
   QLabel* qrLabel = new QLabel("Pair with comma connect!");
-  qrLabel->setStyleSheet(R"(font-size: 40px)");
+  qrLabel->setStyleSheet(R"(font-size: 32px)");
   qrLayout->addWidget(qrLabel);
 
   qrLayout->addWidget(new PairingQRWidget);
@@ -226,7 +226,7 @@ void SetupWidget::parseError(QString response) {
   showQr = false;
   mainLayout->setCurrentIndex(0);
   setStyleSheet(R"(
-    font-size: 90px;
+    font-size: 72px;
     background-color: #000000;
   )");
 }
@@ -245,7 +245,7 @@ void SetupWidget::replyFinished(QString response) {
 
   if (mainLayout->currentIndex() == 0) { // If we are still on the blank widget
     setStyleSheet(R"(
-      font-size: 90px;
+      font-size: 72px;
       font-weight: bold;
       background-color: #292929;
     )");
