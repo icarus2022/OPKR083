@@ -133,6 +133,12 @@ QWidget * toggles_panel() {
                                             "QT UI를 사용합니다. 기존 OFFROAD APK를 활성화 하려면 이 기능을 끄십시오.",
                                             "../assets/offroad/icon_shell.png"
                                             ));
+  toggles_list->addWidget(horizontal_line());
+  toggles_list->addWidget(new ParamsToggle("IsOpenpilotViewEnabled",
+                                            "오픈파일럿 화면 미리보기",
+                                            "오픈파일럿 화면을 미리보기 합니다.",
+                                            "../assets/offroad/icon_shell.png"
+                                            ));
 
   QWidget *widget = new QWidget;
   widget->setLayout(toggles_list);
@@ -160,29 +166,6 @@ QWidget * device_panel() {
   for (auto &l : labels) {
     device_layout->addWidget(labelWidget(QString::fromStdString(l.first), QString::fromStdString(l.second)), 0, Qt::AlignTop);
   }
-
-  if (params.read_db_bool("IsOpenpilotViewEnabled")) {
-    QPushButton* ocam_view = new QPushButton("오픈파일럿 화면 미리보기 해제");
-    device_layout->addWidget(ocam_view, 0, Qt::AlignBottom);
-    device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
-    QObject::connect(ocam_view, &QPushButton::released, [=]() {
-      Params().write_db_value("IsOpenpilotViewEnabled", "0", 1);
-    });
-  } else {
-    QPushButton* ocam_view = new QPushButton("오픈파일럿 화면 미리보기");
-    device_layout->addWidget(ocam_view, 0, Qt::AlignBottom);
-    device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
-    QObject::connect(ocam_view, &QPushButton::released, [=]() {
-      Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
-    });
-  }
-
-  QPushButton* ocam_view = new QPushButton("오픈파일럿 화면 미리보기");
-  device_layout->addWidget(ocam_view, 0, Qt::AlignBottom);
-  device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
-  QObject::connect(ocam_view, &QPushButton::released, [=]() {
-    Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
-  });
 
   QPushButton* dcam_view = new QPushButton("운전자 영상 미리보기");
   device_layout->addWidget(dcam_view, 0, Qt::AlignBottom);
