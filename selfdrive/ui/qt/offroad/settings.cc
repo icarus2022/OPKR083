@@ -161,18 +161,12 @@ QWidget * device_panel() {
     device_layout->addWidget(labelWidget(QString::fromStdString(l.first), QString::fromStdString(l.second)), 0, Qt::AlignTop);
   }
 
-  QPushButton* ocam_view = new QPushButton("오픈파일럿 화면 미리보기");
+  std::string ocam_title = params.read_db_bool("IsOpenpilotViewEnabled") ? "오픈파일럿 화면 미리보기" : "오픈파일럿 화면 미리보기 해제";
+  QPushButton* ocam_view = new QPushButton(ocam_title);
   device_layout->addWidget(ocam_view, 0, Qt::AlignBottom);
   device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
   QObject::connect(ocam_view, &QPushButton::released, [=]() {
-    Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
-  });
-
-  QPushButton* ocam_unview = new QPushButton("오픈파일럿 화면 미리보기 해제");
-  device_layout->addWidget(ocam_unview, 0, Qt::AlignBottom);
-  device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
-  QObject::connect(ocam_unview, &QPushButton::released, [=]() {
-    Params().write_db_value("IsOpenpilotViewEnabled", "0", 1);
+    params.read_db_bool("IsOpenpilotViewEnabled") ? Params().write_db_value("IsOpenpilotViewEnabled", "0", 1) : Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
   });
 
   QPushButton* dcam_view = new QPushButton("운전자 영상 미리보기");
