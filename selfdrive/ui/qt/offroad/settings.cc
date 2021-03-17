@@ -168,10 +168,10 @@ QWidget * device_panel() {
     Params().write_db_value("IsOpenpilotViewEnabled", "1", 1);
   });
 
-  QPushButton* ocam_view = new QPushButton("오픈파일럿 화면 미리보기 해제");
-  device_layout->addWidget(ocam_view, 0, Qt::AlignBottom);
+  QPushButton* ocam_unview = new QPushButton("오픈파일럿 화면 미리보기 해제");
+  device_layout->addWidget(ocam_unview, 0, Qt::AlignBottom);
   device_layout->addWidget(horizontal_line(), Qt::AlignBottom);
-  QObject::connect(ocam_view, &QPushButton::released, [=]() {
+  QObject::connect(ocam_unview, &QPushButton::released, [=]() {
     Params().write_db_value("IsOpenpilotViewEnabled", "0", 1);
   });
 
