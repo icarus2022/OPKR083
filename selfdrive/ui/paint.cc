@@ -387,11 +387,11 @@ static void ui_draw_debug(UIState *s)
     //ui_print(s, ui_viz_rx, ui_viz_ry+100, "AOfs:%.2f", scene.liveParams.angleOffset);
     ui_print(s, ui_viz_rx, ui_viz_ry+300, "AA:%.2f", scene.liveParams.angleOffsetAverage);
     ui_print(s, ui_viz_rx, ui_viz_ry+350, "SF:%.2f", scene.liveParams.stiffnessFactor);
-
-    //ui_print(s, ui_viz_rx, ui_viz_ry+400, "AD:%.2f", scene.lateralPlan.steerActuatorDelay);
-    ui_print(s, ui_viz_rx, ui_viz_ry+400, "SC:%.2f", scene.lateralPlan.steerRateCost);
-    ui_print(s, ui_viz_rx, ui_viz_ry+450, "OS:%.2f", abs(scene.output_scale));
-    nvgFontSize(s->vg, 40);
+    ui_print(s, ui_viz_rx, ui_viz_ry+350, "SF:%.2f", scene.liveParams.stiffnessFactor);
+    ui_print(s, ui_viz_rx, ui_viz_ry+400, "AD:%.2f", scene.lateralPlan.steerActuatorDelay);
+    ui_print(s, ui_viz_rx, ui_viz_ry+450, "SC:%.2f", scene.lateralPlan.steerRateCost);
+    ui_print(s, ui_viz_rx, ui_viz_ry+500, "OS:%.2f", abs(scene.output_scale));
+    nvgFontSize(s->vg, 50);
     nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
     if (s->lat_control == 0) {
       ui_print(s, ui_viz_rx_center, ui_viz_ry+310, "PID");

@@ -86,6 +86,8 @@ class LateralPlanner():
     self.lane_change_adjust_vel = [8.3, 16, 22, 30]
     self.lane_change_adjust_new = 0.0
 
+    self.new_steer_actuator_delay = CP.steerActuatorDelay
+
     self.standstill_elapsed_time = 0.0
     self.v_cruise_kph = 0
     self.stand_still = False
@@ -276,6 +278,8 @@ class LateralPlanner():
     plan_send.lateralPlan.desire = self.desire
     plan_send.lateralPlan.laneChangeState = self.lane_change_state
     plan_send.lateralPlan.laneChangeDirection = self.lane_change_direction
+
+    plan_send.lateralPlan.steerActuatorDelay = self.new_steer_actuator_delay
 
     plan_send.lateralPlan.steerRateCost = self.steer_rate_cost
     plan_send.lateralPlan.outputScale = self.output_scale
