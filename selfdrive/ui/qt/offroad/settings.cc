@@ -128,7 +128,7 @@ QWidget * toggles_panel() {
                                             "../assets/offroad/icon_shell.png"
                                             ));
   toggles_list->addWidget(horizontal_line());
-  toggles_list->addWidget(new ParamsToggle("QTEnabled",
+  toggles_list->addWidget(new ParamsToggle("QtEnabled",
                                             "QT 활성화",
                                             "QT UI를 사용합니다. 기존 OFFROAD APK를 활성화 하려면 이 기능을 끄십시오.",
                                             "../assets/offroad/icon_shell.png"
