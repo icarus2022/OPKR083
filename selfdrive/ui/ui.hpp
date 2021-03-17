@@ -204,6 +204,8 @@ typedef struct UIScene {
   struct _LateralPlan
   {
     float laneWidth;
+    float steerRatio;
+    float steerActuatorDelay;    
     float steerRateCost;
     int standstillElapsedTime = 0;
 
