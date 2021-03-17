@@ -812,6 +812,8 @@ struct LateralPlan @0xe1e9318e2ae8b51e {
   vCruiseSet @27 :Float32;
   vCurvature @28 :Float32;
   steerAngleDesireDeg @29 :Float32;
+  
+  steerActuatorDelay @30 :Float32;
 
   enum Desire {
     none @0;
