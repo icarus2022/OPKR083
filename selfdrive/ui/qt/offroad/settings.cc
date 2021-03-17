@@ -329,10 +329,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
 
   // setup panels
   panels = {
-    {"Developer", developer_panel()},
-    {"Device", device_panel()},
-    {"Network", network_panel(this)},
-    {"Toggles", toggles_panel()},
+    {"개발자", developer_panel()},
+    {"장치", device_panel()},
+    {"네트워크", network_panel(this)},
+    {"토글메뉴", toggles_panel()},
   };
 
   sidebar_layout->addSpacing(45);
