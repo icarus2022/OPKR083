@@ -15,6 +15,8 @@
 #include "ui.hpp"
 #include "paint.hpp"
 #include "android/sl_sound.hpp"
+#include "dashcam.h"
+#include "latcontrol.h"
 
 ExitHandler do_exit;
 static void ui_set_brightness(UIState *s, int brightness) {
