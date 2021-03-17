@@ -154,9 +154,8 @@ void OffroadHome::refresh() {
   }
 
   QLocale locale(QLocale::Korean);
-  QDateTime dt = locale.currentDateTime().toString("yyyy년 M월 d일 dddd");
-  date->setText(dt);
-
+  dt->setText(QDateTime::currentDateTime().toString("yyyy M d, dddd"));
+  QDateTime date = locale.toDateTime(dt, "yyyy년 M월 d일, dddd");
   // update alerts
 
   alerts_widget->refresh();
