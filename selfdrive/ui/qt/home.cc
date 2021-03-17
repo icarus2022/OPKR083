@@ -153,8 +153,9 @@ void OffroadHome::refresh() {
     return;
   }
 
-  QLocale korean("ko");
-  date->setText(QDateTime::currentDateTime().toString("yyyy년 M월 d일 dddd"));
+  QLocale locale(QLocale::Korean);
+  QDateTime dt = locale.currentDateTime().toString("yyyy년 M월 d일 dddd");
+  date->setText(dt);
 
   // update alerts
 
