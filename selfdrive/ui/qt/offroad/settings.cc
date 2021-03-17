@@ -262,6 +262,7 @@ QWidget * network_panel(QWidget * parent) {
     {"Open Tethering Settings", "am start -n com.android.settings/.TetherSettings \
                                  --ez extra_prefs_show_button_bar true \
                                  --es extra_prefs_set_next_text ''"},
+    {"Run Mixplorer", "/data/openpilot/run_mixplorer.sh"},
   };
   for (auto &b : btns) {
     QPushButton *btn = new QPushButton(b.first);
