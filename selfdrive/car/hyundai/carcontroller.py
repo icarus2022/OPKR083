@@ -159,18 +159,10 @@ class CarController():
 
     self.safety_camera_timer = 0
 
-    self.model_speed_range = [20, 200, 255]
+    self.model_speed_range = [20, 100, 255]
     self.steerMax_range = [CarControllerParams.STEER_MAX, int(self.params.get('SteerMaxBaseAdj')), 255]
     self.steerDeltaUp_range = [7, int(self.params.get('SteerDeltaUpAdj')), 3]
     self.steerDeltaDown_range = [15, int(self.params.get('SteerDeltaDownAdj')), 5]
-    # self.model_speed_range = [30, 120, 255]
-    # self.steerMax_range = [CarControllerParams.STEER_MAX, int(self.params.get('SteerMaxBaseAdj')), int(self.params.get('SteerMaxBaseAdj'))]
-    # self.steerDeltaUp_range = [5, int(self.params.get('SteerDeltaUpAdj')), int(self.params.get('SteerDeltaUpAdj'))]
-    # self.steerDeltaDown_range = [10, int(self.params.get('SteerDeltaDownAdj')), int(self.params.get('SteerDeltaDownAdj'))]
-    #self.model_speed_range = [0, 30, 255]
-    #self.steerMax_range = [int(self.params.get('SteerMaxBaseAdj')), int(self.params.get('SteerMaxBaseAdj')), CarControllerParams.STEER_MAX]
-    #self.steerDeltaUp_range = [int(self.params.get('SteerDeltaUpAdj')), int(self.params.get('SteerDeltaUpAdj')), 5]
-    #self.steerDeltaDown_range = [int(self.params.get('SteerDeltaDownAdj')), int(self.params.get('SteerDeltaDownAdj')), 10]
 
     self.steerMax = int(self.params.get('SteerMaxBaseAdj'))
     self.steerDeltaUp = int(self.params.get('SteerDeltaUpAdj'))
@@ -225,8 +217,7 @@ class CarController():
     self.outScale = lateral_plan.outputScale
     self.vCruiseSet = lateral_plan.vCruiseSet
     
-    # self.model_speed = interp(abs(lateral_plan.vCurvature), [0.0002, 0.01], [255, 30])
-    self.model_speed = interp(abs(lateral_plan.vCurvature), [0.0002, 0.002, 0.02], [255, 100, 20])    
+    self.model_speed = interp(abs(lateral_plan.vCurvature), [0.0001, 0.002, 0.02], [255, 100, 30])    
 
     if CS.out.vEgo > 8:
       if self.variable_steer_max:
