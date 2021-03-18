@@ -1000,6 +1000,26 @@ static void bb_ui_draw_UI(UIState *s) {
   bb_ui_draw_measures_left(s, bb_dmr_x, bb_dmr_y-20, bb_dmr_w);
 }
 
+static void draw_navi_button(UIState *s) {
+  if (s->vipc_client->connected || s->is_OpenpilotViewEnabled) {
+    int btn_w = 140;
+    int btn_h = 140;
+    int btn_x1 = 1920 - btn_w - 195;
+    int btn_y = 1080 - btn_h - 35;
+    int btn_xc1 = btn_x1 + (btn_w/2);
+    int btn_yc = btn_y + (btn_h/2);
+    nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
+    nvgBeginPath(s->vg);
+    nvgRoundedRect(s->vg, btn_x1, btn_y, btn_w, btn_h, 100);
+    nvgStrokeColor(s->vg, nvgRGBA(255,255,255,80));
+    nvgStrokeWidth(s->vg, 6);
+    nvgStroke(s->vg);
+    nvgFontSize(s->vg, 45);
+    nvgFillColor(s->vg, nvgRGBA(255,255,255,200));
+    nvgText(s->vg,btn_xc1,btn_yc,"NAVI",NULL);
+  }
+}
+
 static void ui_draw_vision_header(UIState *s) {
   NVGpaint gradient = nvgLinearGradient(s->vg, s->viz_rect.x,
                         s->viz_rect.y+(header_h-(header_h/2.5)),
@@ -1014,6 +1034,7 @@ static void ui_draw_vision_header(UIState *s) {
   ui_draw_vision_event(s);
   bb_ui_draw_UI(s);
   ui_draw_tpms(s);
+  draw_navi_button(s);
   if (s->scene.controls_state.getEnabled()) {
     ui_draw_standstill(s);
   }
