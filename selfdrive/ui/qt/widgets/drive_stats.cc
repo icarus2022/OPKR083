@@ -45,7 +45,7 @@ QLayout* build_stat(QString name, int stat) {
 
 void DriveStats::parseError(QString response) {
   clearLayouts(vlayout);
-  vlayout->addWidget(new QLabel("OPENPILOT FOR YOUR COMPORT"), 0, Qt::AlignCenter);
+  vlayout->addWidget(new QLabel("OPENPILOT FOR YOUR COMFORT"), 0, Qt::AlignCenter);
 }
 
 void DriveStats::parseResponse(QString response) {

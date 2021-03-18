@@ -77,6 +77,12 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
   if (ui_state->scene.started && (e->x() >= ui_state->viz_rect.x - bdr_s)) {
     ui_state->sidebar_collapsed = !ui_state->sidebar_collapsed;
   }
+
+  // Map overlay
+  if (ui_state->scene.started && ui_state->sidebar_collapsed && map_btn.ptInRect(e->x(), e->y())) {
+    std::system("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity");
+  }
+
 }
 
 

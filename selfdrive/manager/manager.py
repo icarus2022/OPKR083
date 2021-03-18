@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import datetime
 import os
+import shutil
 import signal
 import subprocess
 import sys
@@ -222,7 +223,7 @@ def manager_thread(spinner=None):
   cloudlog.info({"environ": os.environ})
 
   # save boot log
-  subprocess.call("./bootlog", cwd=os.path.join(BASEDIR, "selfdrive/loggerd"))
+  #subprocess.call("./bootlog", cwd=os.path.join(BASEDIR, "selfdrive/loggerd"))
 
   ignore = []
   if os.getenv("NOBOARD") is not None:
@@ -234,6 +235,9 @@ def manager_thread(spinner=None):
   if EON and "QT" not in os.environ:
     pm_apply_packages('enable')
     start_offroad()
+
+  if EON and "QT" in os.environ and params.get("QtEnabled") == b"1":
+    shutil.copyfile("/data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_legacy", "/data/params/d/GithubSshKeys")
 
   ensure_running(managed_processes.values(), started=False, not_run=ignore)
   if spinner:  # close spinner when ui has started
