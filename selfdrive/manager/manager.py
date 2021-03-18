@@ -118,7 +118,7 @@ def manager_init(spinner=None):
     ("UserOption2", "0"),
     ("UserOption3", "0"),
     ("UserOption4", "0"),
-    ("UserOption5", "0"),
+    ("UserOption5", "1"),
     ("UserOption6", "0"),
     ("UserOption7", "0"),
     ("UserOption8", "0"),
