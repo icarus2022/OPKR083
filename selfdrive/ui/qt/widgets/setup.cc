@@ -120,10 +120,10 @@ void PrimeUserWidget::replyFinished(QString response) {
 PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* vlayout = new QVBoxLayout;
 
-  QLabel* upgradeNow = new QLabel("Upgrade now");
+  QLabel* upgradeNow = new QLabel("   오픈파일럿");
   vlayout->addWidget(upgradeNow);
 
-  QLabel* description = new QLabel("Become a comma prime member in the comma app and get premium features!");
+  QLabel* description = new QLabel("오픈파일럿과 함께 편안한 운전이 되시길 바랍니다.");
   description->setStyleSheet(R"(
     font-size: 48px;
     color: #b8b8b8;
@@ -133,11 +133,11 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
 
   vlayout->addSpacing(50);
 
-  QVector<QString> features = {"✓ REMOTE ACCESS", "✓ 14 DAYS OF STORAGE", "✓ DEVELOPER PERKS"};
+  QVector<QString> features = {"항상 전방을 주시하세요", "오픈파일럿은 보조수단입니다", "무엇보다 안전이 우선입니다"};
   for (auto featureContent : features) {
     QLabel* feature = new QLabel(featureContent);
     feature->setStyleSheet(R"(
-      font-size: 32px;
+      font-size: 30px;
     )");
 
     vlayout->addWidget(feature);
@@ -164,7 +164,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QWidget(parent) {
 
   QVBoxLayout* finishRegistationLayout = new QVBoxLayout;
   finishRegistationLayout->addSpacing(30);
-  QPushButton* finishButton = new QPushButton("Finish registration");
+  QPushButton* finishButton = new QPushButton("등록 완료");
   finishButton->setFixedHeight(200);
   finishButton->setStyleSheet(R"(
     border-radius: 30px;
@@ -174,7 +174,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QWidget(parent) {
   QObject::connect(finishButton, SIGNAL(released()), this, SLOT(showQrCode()));
   finishRegistationLayout->addWidget(finishButton);
 
-  QLabel* registrationDescription = new QLabel("Pair your device with the comma connect app");
+  QLabel* registrationDescription = new QLabel("Comma Connect 앱을 이용하여 장치를 페어링 하세요.");
   registrationDescription->setStyleSheet(R"(
     font-size: 44px;
     font-weight: 400;
@@ -188,7 +188,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QWidget(parent) {
 
   QVBoxLayout* qrLayout = new QVBoxLayout;
 
-  QLabel* qrLabel = new QLabel("Pair with comma connect!");
+  QLabel* qrLabel = new QLabel("페어링이 완료되었습니다.");
   qrLabel->setStyleSheet(R"(font-size: 32px)");
   qrLayout->addWidget(qrLabel);
 

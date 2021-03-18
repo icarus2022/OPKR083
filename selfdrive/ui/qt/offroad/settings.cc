@@ -127,18 +127,6 @@ QWidget * toggles_panel() {
                                             "comma.ai에서 유지 또는 지원하지 않고 표준 안전 모델에 부합하는 것으로 확인되지 않은 오픈 소스 커뮤니티의 기능을 사용하십시오. 이러한 기능에는 커뮤니티 지원 자동차와 커뮤니티 지원 하드웨어가 포함됩니다. 이러한 기능을 사용할 때는 각별히 주의해야 합니다.",
                                             "../assets/offroad/icon_shell.png"
                                             ));
-  toggles_list->addWidget(horizontal_line());
-  toggles_list->addWidget(new ParamsToggle("QtEnabled",
-                                            "QT 활성화",
-                                            "QT UI를 사용합니다. 기존 OFFROAD APK를 활성화 하려면 이 기능을 끄십시오.",
-                                            "../assets/offroad/icon_shell.png"
-                                            ));
-  toggles_list->addWidget(horizontal_line());
-  toggles_list->addWidget(new ParamsToggle("IsOpenpilotViewEnabled",
-                                            "오픈파일럿 화면 미리보기",
-                                            "오픈파일럿 화면을 미리보기 합니다.",
-                                            "../assets/offroad/icon_shell.png"
-                                            ));
 
   QWidget *widget = new QWidget;
   widget->setLayout(toggles_list);
@@ -301,6 +289,27 @@ QWidget * network_panel(QWidget * parent) {
   return w;
 }
 
+QWidget * user_panel() {
+  QVBoxLayout *toggles_list = new QVBoxLayout();
+  toggles_list->setMargin(50);
+
+  toggles_list->addWidget(new ParamsToggle("QtEnabled",
+                                            "QT 활성화",
+                                            "QT UI를 사용합니다. 기존 OFFROAD APK를 활성화 하려면 이 기능을 끄십시오.",
+                                            "../assets/offroad/icon_shell.png"
+                                            ));
+  toggles_list->addWidget(horizontal_line());
+  toggles_list->addWidget(new ParamsToggle("IsOpenpilotViewEnabled",
+                                            "오픈파일럿 화면 미리보기",
+                                            "오픈파일럿 화면을 미리보기 합니다.",
+                                            "../assets/offroad/icon_shell.png"
+                                            ));
+
+  QWidget *widget = new QWidget;
+  widget->setLayout(toggles_list);
+  return widget;
+}
+
 
 void SettingsWindow::setActivePanel() {
   auto *btn = qobject_cast<QPushButton *>(nav_btns->checkedButton());
@@ -333,6 +342,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     {"장치", device_panel()},
     {"네트워크", network_panel(this)},
     {"토글메뉴", toggles_panel()},
+    {"사용자설정", user_panel()},
   };
 
   sidebar_layout->addSpacing(45);
