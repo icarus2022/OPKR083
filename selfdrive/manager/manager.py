@@ -223,7 +223,7 @@ def manager_thread(spinner=None):
   cloudlog.info({"environ": os.environ})
 
   # save boot log
-  #subprocess.call("./bootlog", cwd=os.path.join(BASEDIR, "selfdrive/loggerd"))
+  subprocess.call("./bootlog", cwd=os.path.join(BASEDIR, "selfdrive/loggerd"))
 
   ignore = []
   if os.getenv("NOBOARD") is not None:
