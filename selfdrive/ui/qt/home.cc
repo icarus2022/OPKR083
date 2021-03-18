@@ -76,7 +76,7 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
 
   // OPKR add map
   if (ui_state->scene.started && ui_state->sidebar_collapsed && map_overlay_btn.ptInRect(e->x(), e->y())) {
-    QProcess::execute("am start --activity-task-on-home com.gmd.hidesoftkeys/com.gmd.hidesoftkeys.MainActivity");
+    QProcess::execute("am start --activity-task-on-home com.example.maphack/com.example.maphack.MainActivity");
     return;
   }
   if (ui_state->scene.started && ui_state->sidebar_collapsed && map_btn.ptInRect(e->x(), e->y())) {
