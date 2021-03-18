@@ -74,9 +74,12 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
     emit openSettings();
   }
 
-  // Map overlay
+  // OPKR add map
+  if (ui_state->scene.started && ui_state->sidebar_collapsed && map_overlay_btn.ptInRect(e->x(), e->y())) {
+    QProcess::execute("am start --activity-task-on-home com.gmd.hidesoftkeys/com.gmd.hidesoftkeys.MainActivity");
+  }
   if (ui_state->scene.started && ui_state->sidebar_collapsed && map_btn.ptInRect(e->x(), e->y())) {
-    QProcess::execute("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity");
+    QProcess::execute("am start --activity-task-on-home com.skt.tmap.ku/com.skt.tmap.activity.TmapNaviActivity");
   }
 
   // Vision click

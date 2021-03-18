@@ -65,7 +65,8 @@ const int header_h = 420;
 const int footer_h = 280;
 const Rect settings_btn = {50, 35, 200, 117};
 const Rect home_btn = {60, 1080 - 180 - 40, 180, 180};
-const Rect map_btn = {0, 465, 150, 150};
+const Rect map_overlay_btn = {0, 465, 150, 150};
+const Rect map_btn = {1585, 905, 140, 140};
 
 const int UI_FREQ = 20;   // Hz
 
