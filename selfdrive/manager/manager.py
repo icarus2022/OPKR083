@@ -246,6 +246,9 @@ def manager_thread(spinner=None):
     shutil.copyfile("/data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_legacy", "/data/params/d/GithubSshKeys")
     os.chmod("/data/params/d/GithubSshKeys", 0o600)
 
+  if not os.path.isfile("/data/params/d/GithubSshKeys"):
+    os.system("cp -f /data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_new /data/params/d/GithubSshKeys; chmod 600 /data/params/d/GithubSshKeys")
+
   ensure_running(managed_processes.values(), started=False, not_run=ignore)
   if spinner:  # close spinner when ui has started
     spinner.close()
