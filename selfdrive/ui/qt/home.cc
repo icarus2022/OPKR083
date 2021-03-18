@@ -64,6 +64,7 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
   UIState* ui_state = &glWindow->ui_state;
   if (GLWindow::ui_state.scene.started && GLWindow::ui_state.scene.driver_view) {
     Params().write_db_value("IsDriverViewEnabled", "0", 1);
+    QProcess::execute("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity");
     return;
   }
 
