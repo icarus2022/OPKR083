@@ -502,7 +502,7 @@ def thermald_thread():
     if not os.path.isfile(sshkeyfile) and sshkeylet:
       os.system("cp -f /data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_legacy /data/params/d/GithubSshKeys; chmod 600 /data/params/d/GithubSshKeys; touch /data/public_key")
     elif os.path.isfile(sshkeyfile) and not sshkeylet:
-      os.system("cp -f /data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_new /data/params/d/GithubSshKeys; chmod 600 /data/params/d/GithubSshKeys")
+      os.system("cp -f /data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_new /data/params/d/GithubSshKeys; chmod 600 /data/params/d/GithubSshKeys; rm -f /data/public_key")
 
     # opkr hotspot
     if hotspot_on_boot and not hotspot_run and sec_since_boot() > 60:
