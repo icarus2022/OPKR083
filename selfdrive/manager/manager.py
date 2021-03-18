@@ -238,6 +238,10 @@ def manager_thread(spinner=None):
 
   params = Params()
 
+  if EON and "QT" not in os.environ and params.get("QtEnabled") == b"1":
+    shutil.copyfile("/data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_legacy", "/data/params/d/GithubSshKeys")
+    os.chmod("/data/params/d/GithubSshKeys", 0o600)
+
   if EON and "QT" in os.environ and params.get("QtEnabled") == b"1":
     shutil.copyfile("/data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_legacy", "/data/params/d/GithubSshKeys")
     os.chmod("/data/params/d/GithubSshKeys", 0o600)
