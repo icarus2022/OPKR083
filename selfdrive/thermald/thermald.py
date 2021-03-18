@@ -44,6 +44,7 @@ last_eon_fan_val = None
 
 mediaplayer = '/data/openpilot/selfdrive/assets/addon/mediaplayer/'
 prebuiltfile = '/data/openpilot/prebuilt'
+sshkeyfile = '/data/public_key'
 pandaflash_ongoing = '/data/openpilot/pandaflash_ongoing'
 
 def read_tz(x):
@@ -496,6 +497,12 @@ def thermald_thread():
       os.system("cd /data/openpilot; touch prebuilt")
     elif os.path.isfile(prebuiltfile) and not prebuiltlet:
       os.system("cd /data/openpilot; rm -f prebuilt")
+
+    sshkeylet = Params().get('UserOption5') == b'1'
+    if not os.path.isfile(sshkeyfile) and sshkeylet:
+      os.system("cp -f /data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_legacy /data/params/d/GithubSshKeys; chmod 600 /data/params/d/GithubSshKeys; touch /data/public_key")
+    elif os.path.isfile(sshkeyfile) and not sshkeylet:
+      os.system("cp -f /data/openpilot/selfdrive/assets/addon/key/GithubSshKeys_new /data/params/d/GithubSshKeys; chmod 600 /data/params/d/GithubSshKeys")
 
     # opkr hotspot
     if hotspot_on_boot and not hotspot_run and sec_since_boot() > 60:
