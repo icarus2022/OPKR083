@@ -64,7 +64,6 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
   UIState* ui_state = &glWindow->ui_state;
   if (GLWindow::ui_state.scene.started && GLWindow::ui_state.scene.driver_view) {
     Params().write_db_value("IsDriverViewEnabled", "0", 1);
-    QProcess::execute("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity");
     return;
   }
 
@@ -75,14 +74,14 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
     emit openSettings();
   }
 
-  // Vision click
-  if (ui_state->scene.started && (e->x() >= ui_state->viz_rect.x - bdr_s)) {
-    ui_state->sidebar_collapsed = !ui_state->sidebar_collapsed;
-  }
-
   // Map overlay
   if (ui_state->scene.started && ui_state->sidebar_collapsed && map_btn.ptInRect(e->x(), e->y())) {
     QProcess::execute("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity");
+  }
+
+  // Vision click
+  if (ui_state->scene.started && (e->x() >= ui_state->viz_rect.x - bdr_s)) {
+    ui_state->sidebar_collapsed = !ui_state->sidebar_collapsed;
   }
 
 }
