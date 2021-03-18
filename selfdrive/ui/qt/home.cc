@@ -11,6 +11,7 @@
 #include <QStackedLayout>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QProcess>
 
 #include "common/params.h"
 #include "common/timing.h"
@@ -73,10 +74,19 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
     emit openSettings();
   }
 
+  // OPKR add map
+  if (ui_state->scene.started && ui_state->sidebar_collapsed && map_overlay_btn.ptInRect(e->x(), e->y())) {
+    QProcess::execute("am start --activity-task-on-home com.gmd.hidesoftkeys/com.gmd.hidesoftkeys.MainActivity");
+  }
+  if (ui_state->scene.started && ui_state->sidebar_collapsed && map_btn.ptInRect(e->x(), e->y())) {
+    QProcess::execute("am start --activity-task-on-home com.skt.tmap.ku/com.skt.tmap.activity.TmapNaviActivity");
+  }
+
   // Vision click
   if (ui_state->scene.started && (e->x() >= ui_state->viz_rect.x - bdr_s)) {
     ui_state->sidebar_collapsed = !ui_state->sidebar_collapsed;
   }
+
 }
 
 
@@ -93,7 +103,7 @@ OffroadHome::OffroadHome(QWidget* parent) : QWidget(parent) {
   date->setStyleSheet(R"(font-size: 55px;)");
   header_layout->addWidget(date, 0, Qt::AlignTop | Qt::AlignLeft);
 
-  QLabel* version = new QLabel(QString::fromStdString("openpilot v" + Params().get("Version")));
+  QLabel* version = new QLabel(QString::fromStdString("오픈파일럿 v" + Params().get("Version")));
   version->setStyleSheet(R"(font-size: 45px;)");
   header_layout->addWidget(version, 0, Qt::AlignTop | Qt::AlignRight);
 
@@ -152,8 +162,8 @@ void OffroadHome::refresh() {
     return;
   }
 
-  date->setText(QDateTime::currentDateTime().toString("dddd, MMMM d"));
-
+  //QLocale locale(QLocale::Korean);
+  date->setText(QDateTime::currentDateTime().toString("yyyy년 M월 d일"));
   // update alerts
 
   alerts_widget->refresh();
@@ -163,10 +173,10 @@ void OffroadHome::refresh() {
   }
 
   if (alerts_widget->updateAvailable) {
-    alert_notification->setText("UPDATE");
+    alert_notification->setText("업데이트");
   } else {
     int alerts = alerts_widget->alerts.size();
-    alert_notification->setText(QString::number(alerts) + " ALERT" + (alerts == 1 ? "" : "S"));
+    alert_notification->setText(QString::number(alerts) + " 경고" + (alerts == 1 ? "" : "S"));
   }
 
   alert_notification->setVisible(true);

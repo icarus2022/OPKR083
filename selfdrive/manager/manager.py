@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import datetime
 import os
+import shutil
 import signal
 import subprocess
 import sys
@@ -117,7 +118,7 @@ def manager_init(spinner=None):
     ("UserOption2", "0"),
     ("UserOption3", "0"),
     ("UserOption4", "0"),
-    ("UserOption5", "0"),
+    ("UserOption5", "1"),
     ("UserOption6", "0"),
     ("UserOption7", "0"),
     ("UserOption8", "0"),
@@ -127,7 +128,7 @@ def manager_init(spinner=None):
     ("UserOptionName2", "Shane's FeedForward 활성화"),
     ("UserOptionName3", "저속 조향각 제한 활성화"),
     ("UserOptionName4", "가변크루즈 사용시 카메라감속만 사용"),
-    ("UserOptionName5", ""),
+    ("UserOptionName5", "SSH 기존 공개키 사용"),
     ("UserOptionName6", ""),
     ("UserOptionName7", ""),
     ("UserOptionName8", ""),
@@ -137,12 +138,13 @@ def manager_init(spinner=None):
     ("UserOptionNameDescription2", "PID제어 사용시 Shane's FeedForward를 활성화 합니다. 직선구간에서는 토크를 낮추고 곡선구간에서는 토크를 높여 핸들 움직임을 능동적으로 합니다."),
     ("UserOptionNameDescription3", "저속 주행시 급격한 필요조향각 변화 시 현재조향각 변화를 제한하여 스티어링의 과도한 조향을 억제 합니다"),
     ("UserOptionNameDescription4", "가변크루즈 사용시 카메라감속기능만 사용합니다. 차간거리 및 커브구간 가속/감속 기능은 사용하지 않습니다. ※오파모드에서는 동작하지 않습니다."),
-    ("UserOptionNameDescription5", ""),
+    ("UserOptionNameDescription5", "SSH 접속 시 기존(0.8.2이하) 공개키로 접속 합니다."),
     ("UserOptionNameDescription6", ""),
     ("UserOptionNameDescription7", ""),
     ("UserOptionNameDescription8", ""),
     ("UserOptionNameDescription9", ""),
     ("UserOptionNameDescription10", ""),
+    ("QtEnabled", "0"),
   ]
 
   # set unset params
@@ -221,7 +223,7 @@ def manager_thread(spinner=None):
   cloudlog.info({"environ": os.environ})
 
   # save boot log
-  subprocess.call("./bootlog", cwd=os.path.join(BASEDIR, "selfdrive/loggerd"))
+  #subprocess.call("./bootlog", cwd=os.path.join(BASEDIR, "selfdrive/loggerd"))
 
   ignore = []
   if os.getenv("NOBOARD") is not None:
@@ -240,6 +242,7 @@ def manager_thread(spinner=None):
 
   started_prev = False
   params = Params()
+
   sm = messaging.SubMaster(['deviceState'])
   pm = messaging.PubMaster(['managerState'])
 
