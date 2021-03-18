@@ -11,6 +11,7 @@
 #include <QStackedLayout>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QProcess>
 
 #include "common/params.h"
 #include "common/timing.h"
@@ -80,7 +81,7 @@ void HomeWindow::mousePressEvent(QMouseEvent* e) {
 
   // Map overlay
   if (ui_state->scene.started && ui_state->sidebar_collapsed && map_btn.ptInRect(e->x(), e->y())) {
-    std::system("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity");
+    QProcess::execute("am start --activity-task-on-home ai.comma.plus.offroad/.MainActivity"));
   }
 
 }
