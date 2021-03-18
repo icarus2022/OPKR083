@@ -999,7 +999,7 @@ static void draw_navi_button(UIState *s) {
     int btn_y = 1080 - btn_h - 35;
     int btn_xc1 = btn_x1 + (btn_w/2);
     int btn_yc = btn_y + (btn_h/2);
-    nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_TOP);
+    nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
     nvgBeginPath(s->vg);
     nvgRoundedRect(s->vg, btn_x1, btn_y, btn_w, btn_h, 100);
     nvgStrokeColor(s->vg, nvgRGBA(255,255,255,80));
