@@ -267,11 +267,11 @@ QWidget * network_panel(QWidget * parent) {
   // TODO: can probably use the ndk for this
   // simple wifi + tethering buttons
   std::vector<std::pair<const char*, const char*>> btns = {
-    {"Open WiFi Settings", "am start -n com.android.settings/.wifi.WifiPickerActivity \
+    {"WiFi 설정 열기", "am start -n com.android.settings/.wifi.WifiPickerActivity \
                             -a android.net.wifi.PICK_WIFI_NETWORK \
                             --ez extra_prefs_show_button_bar true \
                             --es extra_prefs_set_next_text ''"},
-    {"Open Tethering Settings", "am start -n com.android.settings/.TetherSettings \
+    {"테더링 설정 열기", "am start -n com.android.settings/.TetherSettings \
                                  --ez extra_prefs_show_button_bar true \
                                  --es extra_prefs_set_next_text ''"},
     {"Run Mixplorer", "/data/openpilot/run_mixplorer.sh"},
