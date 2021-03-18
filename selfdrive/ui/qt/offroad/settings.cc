@@ -299,6 +299,12 @@ QWidget * user_panel() {
                                             "../assets/offroad/icon_shell.png"
                                             ));
   toggles_list->addWidget(horizontal_line());
+  toggles_list->addWidget(new ParamsToggle("UserOption5",
+                                            "SSH 기존 공개키 사용",
+                                            "SSH 접속 시 기존(0.8.2이하) 공개키로 접속 합니다.",
+                                            "../assets/offroad/icon_shell.png"
+                                            ));
+  toggles_list->addWidget(horizontal_line());
   toggles_list->addWidget(new ParamsToggle("IsOpenpilotViewEnabled",
                                             "오픈파일럿 화면 미리보기",
                                             "오픈파일럿 화면을 미리보기 합니다.",

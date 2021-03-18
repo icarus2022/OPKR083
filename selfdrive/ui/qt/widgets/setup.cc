@@ -120,10 +120,10 @@ void PrimeUserWidget::replyFinished(QString response) {
 PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* vlayout = new QVBoxLayout;
 
-  QLabel* upgradeNow = new QLabel("   오픈파일럿");
+  QLabel* upgradeNow = new QLabel("    오픈파일럿");
   vlayout->addWidget(upgradeNow);
 
-  QLabel* description = new QLabel("오픈파일럿과 함께 편안한 운전이 되시길 바랍니다.");
+  QLabel* description = new QLabel("오픈파일럿과 함께 편안하고 안전한 운전이 되시길 바랍니다.");
   description->setStyleSheet(R"(
     font-size: 48px;
     color: #b8b8b8;
@@ -137,7 +137,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QWidget(parent) {
   for (auto featureContent : features) {
     QLabel* feature = new QLabel(featureContent);
     feature->setStyleSheet(R"(
-      font-size: 30px;
+      font-size: 33px;
     )");
 
     vlayout->addWidget(feature);
