@@ -329,9 +329,9 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
   panel_layout = new QStackedLayout();
 
   // close button
-  QPushButton *close_btn = new QPushButton("X");
+  QPushButton *close_btn = new QPushButton("닫기");
   close_btn->setStyleSheet(R"(
-    font-size: 90px;
+    font-size: 85px;
     font-weight: bold;
     border 1px grey solid;
     border-radius: 100px;
